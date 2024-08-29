@@ -10,12 +10,12 @@ module.exports = async (photos) => {
   const track = get();
 
   const callback = async (nextPageToken) => {
-    const response = await photos.albums.list(
+    const response = await photos.sharedAlbums.list(
       MAX_ALBUMS_PAGE_SIZE,
       nextPageToken
     );
 
-    return { batch: response.albums, nextPageToken: response.nextPageToken };
+    return { batch: response.sharedAlbums, nextPageToken: response.nextPageToken };
   };
 
   const albums = await batchLoader(callback);
